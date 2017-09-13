@@ -1,7 +1,6 @@
 #include "Menu.h"
 #include "ImGui/imgui_internal.h"
 #include "settings.h"
-#include "config.h"
 #include <Shlobj.h>
 #include "AimBotTab.h"
 #include "TriggerBotTab.h"
