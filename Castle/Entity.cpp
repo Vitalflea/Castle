@@ -1,0 +1,82 @@
+#include "entity.h"
+#include "math.h"
+
+bool Entity::IsVisible(C_BasePlayer* player, Bone bone, float fov, bool smoke_check)
+{
+	C_BasePlayer* localplayer = (C_BasePlayer*)pEntityList->GetClientEntity(pEngine->GetLocalPlayer());
+	if (!localplayer)
+		return true;
+
+	if (player == localplayer)
+		return true;
+
+	if (!localplayer->GetAlive())
+	{
+		if (*localplayer->GetObserverMode() == ObserverMode_t::OBS_MODE_IN_EYE && localplayer->GetObserverTarget())
+			localplayer = (C_BasePlayer*)pEntityList->GetClientEntityFromHandle(localplayer->GetObserverTarget());
+
+		if (!localplayer)
+			return true;
+	}
+
+	Vector e_vecHead = player->GetBonePosition((int)bone);
+	Vector p_vecHead = localplayer->GetEyePosition();
+
+	Vector viewAngles;
+	pEngine->GetViewAngles(viewAngles);
+
+	// FIXME: scale fov by distance? its not really working that well...
+	//if (Math::GetFov(viewAngles, Math::CalcAngle(p_vecHead, e_vecHead)) > fov)
+	//	return false;
+
+	Ray_t ray;
+	trace_t tr;
+	ray.Init(p_vecHead, e_vecHead);
+	CTraceFilter traceFilter;
+	traceFilter.pSkip = localplayer;
+	pTrace->TraceRay(ray, MASK_SHOT, &traceFilter, &tr);
+
+	//if (smoke_check && LineGoesThroughSmoke(p_vecHead, e_vecHead, true))
+	//	return false;
+
+	return tr.m_pEnt == player;
+}
+
+bool Entity::IsPlanting(C_BasePlayer* player)
+{
+	C_BaseCombatWeapon* activeWeapon = (C_BaseCombatWeapon*)pEntityList->GetClientEntityFromHandle(player->GetActiveWeapon());
+	if (!activeWeapon)
+		return false;
+
+	ClientClass* clientClass = activeWeapon->GetClientClass();
+	if (!clientClass)
+		return false;
+
+	if (clientClass->m_ClassID != EClassIds::CC4)
+		return false;
+
+	return ((C_WeaponC4*)activeWeapon)->GetStartedArming();
+}
+
+Bone Entity::GetBoneByName(C_BasePlayer* player, const char* boneName)
+{
+	studiohdr_t* pStudioModel = pModelInfo->GetStudioModel(player->GetModel());
+	if (!pStudioModel)
+		return Bone::INVALID;
+
+	matrix3x4_t pBoneToWorldOut[128];
+	if (!player->SetupBones(pBoneToWorldOut, 128, 256, 0))
+		return Bone::INVALID;
+
+	for (int i = 0; i < pStudioModel->numbones; i++)
+	{
+		mstudiobone_t *pBone = pStudioModel->pBone(i);
+		if (!pBone)
+			continue;
+
+		if (pBone->pszName() && strcmp(pBone->pszName(), boneName) == 0)
+			return (Bone)i;
+	}
+
+	return Bone::INVALID;
+}
