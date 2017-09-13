@@ -954,7 +954,7 @@ void Settings::LoadSettings()
 
 	if (SUCCEEDED(SHGetFolderPathA(NULL, CSIDL_APPDATA, NULL, 0, path)))
 	{
-		folder = std::string(path) + "\\Resurrection\\";
+		folder = std::string(path) + "\\Castle\\";
 	
 	}
 
