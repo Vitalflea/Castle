@@ -7,4 +7,4 @@ You will need to include the ImGui folder and directx9_example folder used in Ai
 
 You will need to include the sdk folder.
 
-You will need to include the directx sdk.
+You will need to include the directx 9 sdk.
