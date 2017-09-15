@@ -102,7 +102,7 @@ DWORD WINAPI Stage1(LPVOID hInstance)
 	FireEventHook->HookFunction(Hooks::hFireEventClientSide, 9);
 
 	RenderViewHook = std::make_unique<VMTHook>(pViewRender);
-	//RenderViewHook->HookFunction(Hooks::hRenderView, 6); seems to not work on some computers, not sure what the deal is.
+	//RenderViewHook->HookFunction(Hooks::hRenderView, 6); seems to not work on some computers, not sure why
 
 	//OpenConsole();
 	//std::cout << fabs(clock() - Timer) / CLOCKS_PER_SEC;
