@@ -102,7 +102,7 @@ DWORD WINAPI Stage1(LPVOID hInstance)
 	FireEventHook->HookFunction(Hooks::hFireEventClientSide, 9);
 
 	RenderViewHook = std::make_unique<VMTHook>(pViewRender);
-	RenderViewHook->HookFunction(Hooks::hRenderView, 6);
+	//RenderViewHook->HookFunction(Hooks::hRenderView, 6); seems to not work on some computers, not sure what the deal is.
 
 	//OpenConsole();
 	//std::cout << fabs(clock() - Timer) / CLOCKS_PER_SEC;
@@ -122,8 +122,8 @@ DWORD WINAPI Stage2(LPVOID hInstance)
 	//std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	//*dwAddress = (DWORD_PTR)Present;
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(100));
-	RenderViewHook->UnhookFunction(6);
+	//std::this_thread::sleep_for(std::chrono::milliseconds(100));
+	//RenderViewHook->UnhookFunction(6);
 
 	//std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	//SoundHook->UnhookFunction(5);
