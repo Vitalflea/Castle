@@ -101,7 +101,7 @@ DWORD WINAPI Stage1(LPVOID hInstance)
 	FireEventHook = std::make_unique<VMTHook>((DWORD**)pGameEvent);
 	FireEventHook->HookFunction(Hooks::hFireEventClientSide, 9);
 
-	RenderViewHook = std::make_unique<VMTHook>(pViewRender);
+	//RenderViewHook = std::make_unique<VMTHook>(pViewRender);
 	//RenderViewHook->HookFunction(Hooks::hRenderView, 6); seems to not work on some computers, not sure why
 
 	//OpenConsole();
