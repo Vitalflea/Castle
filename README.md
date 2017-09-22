@@ -12,4 +12,5 @@ You will need to include the directx 9 sdk.
 # p2c providers selling this cheat
 ShiningWare - Discord
 https://imgur.com/a/f6vta
-![alt tag](https://imgur.com/a/f6vta "Test")
+
+![alt text](https://imgur.com/a/f6vta)
