@@ -18,7 +18,7 @@ bool StageEnd = false;
 DWORD WINAPI Stage1(LPVOID hInstance)
 {
 	pGlowManager = *(CGlowObjectManager **)(FindPattern("client.dll", "\x0F\x11\x05\x00\x00\x00\x00\x83\xC8\x01\xC7\x05\x00\x00\x00\x00\x00\x00\x00\x00", "xxx????xxxxx????xxxx") + 3);
-	pViewRender = **reinterpret_cast<CViewRender***>(FindPattern("client.dll", "\xFF\x50\x14\xE8\x00\x00\x00\x00\x5D", "xxxx????x") - 7);
+	//pViewRender = **reinterpret_cast<CViewRender***>(FindPattern("client.dll", "\xFF\x50\x14\xE8\x00\x00\x00\x00\x5D", "xxxx????x") - 7);
 	MsgFunc_ServerRankRevealAll = reinterpret_cast<MsgFunc_ServerRankRevealAllFn>(FindPattern("client.dll", "\x55\x8B\xEC\x8B\x0D\x00\x00\x00\x00\x68", "xxxxx????x"));
 	IsReadyCallback = reinterpret_cast < IsReady > ((DWORD)FindPattern("client.dll", "\x55\x8B\xEC\x83\xE4\xF8\x83\xEC\x08\x56\x8B\x35\x00\x00\x00\x00\x57\x83\xBE", "xxxxxxxxxxxx????xxx"));
 	KeyValues_KeyValues = FindPattern("client.dll", "\x68\x00\x00\x00\x00\x8B\xC8\xE8\x00\x00\x00\x00\x89\x45\xFC\xEB\x07\xC7\x45\x00\x00\x00\x00\x00\x8B\x03\x56", "x????xxx????xxxxxxx?????xxx"); KeyValues_KeyValues += 7; KeyValues_KeyValues = KeyValues_KeyValues + *reinterpret_cast< PDWORD_PTR >(KeyValues_KeyValues + 1) + 5;
