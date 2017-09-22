@@ -10,4 +10,4 @@ You will need to include the sdk folder.
 You will need to include the directx 9 sdk.
 
 # p2c providers selling this cheat
-ShiningWare - https://discord.gg/vDAkaC
+ShiningWare - Discord
