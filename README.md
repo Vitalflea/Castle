@@ -13,4 +13,7 @@ You will need to include the directx 9 sdk.
 ShiningWare - Discord
 https://imgur.com/a/f6vta
 
-![alt text](https://imgur.com/a/f6vta)
+<p align="center">
+  <img src="https://imgur.com/a/f6vta" width="350"/>
+  <img src="https://imgur.com/a/f6vta" width="350"/>
+</p>
