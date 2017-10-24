@@ -13,3 +13,4 @@ You will need to include the directx 9 sdk.
 ShiningWare - Discord
 https://imgur.com/a/f6vta
 
+freed0m.xyz
