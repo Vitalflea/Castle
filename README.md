@@ -13,3 +13,4 @@ You will need to include the directx 9 sdk.
 ShiningDev
 
 freed0m.xyz
+Get this, he can't fix the skin changer so he pastes in nSkinz https://imgur.com/a/jNDiN
