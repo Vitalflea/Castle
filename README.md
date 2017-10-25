@@ -12,7 +12,7 @@ You will need to include the directx 9 sdk.
 # Bastads selling dis heck
 
 
-# ShiningDev
+# ShiningDev/ShiningMatter
 I think he stopped
 
 # freed0m.xyz
