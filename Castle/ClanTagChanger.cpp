@@ -96,7 +96,7 @@ void ClanTagChanger::UpdateClanTagCallback()
 
 void ClanTagChanger::BeginFrame(float frameTime)
 {
-	static auto pSetClanTag = reinterpret_cast<void(__fastcall*)(const char*, const char*)>(reinterpret_cast<uintptr_t>(GetModuleHandleA("engine.dll")) + 543280);
+	static auto pSetClanTag = reinterpret_cast<void(__fastcall*)(const char*, const char*)>(FindPattern("engine.dll", "\x53\x56\x57\x8B\xDA\x8B\xF9\xFF\x15", "xxxxxxxxx"));
 	if (!Settings::ClanTagChanger::enabled)
 		return;
 
