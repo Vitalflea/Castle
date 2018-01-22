@@ -19,7 +19,7 @@ void ThirdPerson::FrameStageNotify(ClientFrameStage_t stage)
 
 			pInput->CameraVac = Vector(vecAngles.x, vecAngles.y, Settings::ThirdPerson::distance);
 
-			if(Settings::ThirdPerson::Fake || Settings::ThirdPerson::Real && Settings::AntiAim::Pitch::enabled || Settings::AntiAim::Yaw::enabled)
+			if((Settings::ThirdPerson::Fake || Settings::ThirdPerson::Real) && (Settings::AntiAim::Pitch::enabled || Settings::AntiAim::Yaw::enabled))
 				*localplayer->GetVAngles() = lastTickViewAngles;
 		}
 		else
